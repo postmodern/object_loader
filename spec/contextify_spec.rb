@@ -13,11 +13,11 @@ describe Contextify do
   end
 
   it "should contain defined contexts" do
-    Contextify.is_context?(:book).should == true
+    Contextify.is_context?('book').should == true
   end
 
   it "should create a class-level context name" do
-    Book.context_name.should == :book
+    Book.context_name.should == 'book'
   end
 
   it "should raise an UnknownContext exception when loading unknwon-contexts" do

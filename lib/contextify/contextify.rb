@@ -7,7 +7,7 @@ module Contextify
   def self.included(base)
     base.module_eval do
       def self.contextify(name)
-        name = name.to_sym
+        name = name.to_s
 
         Contextify.contexts[name] = self
 
@@ -21,7 +21,7 @@ module Contextify
         Kernel.module_eval %{
           def #{name}(*args,&block)
             if (args.empty? && ::Contextify.is_pending?)
-              ::Contextify.pending.blocks[:#{name}] = block
+              ::Contextify.pending.blocks[#{name.dump}] = block
               return nil
             else
               new_context = #{self}.new(*args)
@@ -45,7 +45,7 @@ module Contextify
     # _name_, returns +false+ otherwise.
     #
     def Contextify.is_context?(name)
-      Contextify.contexts.has_key?(name.to_sym)
+      Contextify.contexts.has_key?(name.to_s)
     end
 
     #
@@ -122,15 +122,15 @@ module Contextify
     # _path_, returning the context block. If a _block_ is given it will
     # be passed the loaded context block.
     #
-    #   Contextify.load_block('/path/to/my_exploit.rb',:exploit) # => Proc
+    #   Contextify.load_block(:exploit,'/path/to/my_exploit.rb') # => Proc
     #
-    #   Contextify.load_block('/path/to/my_shellcode.rb',:shellcode)
+    #   Contextify.load_block(:shellcode,'/path/to/my_shellcode.rb')
     #     do |block|
     #     ...
     #   end
     #
     def Contextify.load_block(name,path,&block)
-      context_block = Contextify.load_blocks(path).blocks[name.to_sym]
+      context_block = Contextify.load_blocks(path).blocks[name.to_s]
 
       block.call(context_block) if block
       return context_block
@@ -144,10 +144,10 @@ module Contextify
     #   Contextify.load_context(:note,'/path/to/my_notes.rb') # => Note
     #
     def Contextify.load_context(name,path,*args)
-      name = name.to_sym
+      name = name.to_s
 
       unless Contextify.is_context?(name)
-        raise(UnknownContext,"unknown context '#{name}'",caller)
+        raise(UnknownContext,"unknown context #{name.dump}",caller)
       end
 
       new_context = Contextify.contexts[name].new(*args)
