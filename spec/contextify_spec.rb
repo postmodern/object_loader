@@ -59,10 +59,6 @@ describe Contextify do
       @book = Book.load_context(@snow_crash_path)
     end
 
-    it "should have a context name" do
-      @book.context_name.should == :book
-    end
-
     it "should have attributes" do
       @book.title.should == 'Snow Crash'
       @book.author.should == 'Neal Stephenson'

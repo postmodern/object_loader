@@ -13,8 +13,6 @@ module Contextify
 
         meta_def(:context_name) { name }
 
-        class_def(:context_name) { name }
-
         meta_def(:load_context) do |path,*args|
           Contextify.load_context(self.context_name,path,*args)
         end
