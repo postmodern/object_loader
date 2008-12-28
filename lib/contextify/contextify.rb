@@ -51,16 +51,6 @@ module Contextify
     end
 
     #
-    # Converts the name of the _base_ class to a context name, returning
-    # it in +String+ form.
-    #
-    #   Contextify.namify(Project::Resources) # => "project_resources"
-    #
-    def Contextify.namify(base)
-      base.to_s.downcase.gsub(/::/,'_').to_sym
-    end
-
-    #
     # Returns the Array of contexts which are waiting to be loaded.
     #
     def Contextify.waiting
