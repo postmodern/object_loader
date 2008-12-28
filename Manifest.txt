@@ -1,0 +1,13 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+lib/contextify.rb
+lib/contextify/exceptions/context_not_found.rb
+lib/contextify/exceptions/unknown_context.rb
+lib/contextify/pending_context.rb
+lib/contextify/contextify.rb
+lib/contextify/version.rb
+spec/contextify_spec.rb
+spec/spec_helper.rb
+tasks/spec.rb
