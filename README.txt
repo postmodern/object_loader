@@ -5,7 +5,8 @@
 
 == DESCRIPTION:
 
-Load objects from files containing simple Ruby code.
+Load objects from Ruby files without having to use YAML or define
+classes named like the file.
 
 == EXAMPLES:
 
@@ -15,7 +16,9 @@ Load objects from files containing simple Ruby code.
     include Contextify
     
     contextify :controller
-
+    
+    ...
+    
   end
 
   # file: my_controller.rb
@@ -31,13 +34,12 @@ Load objects from files containing simple Ruby code.
 
   end
 
-  controller = Controller.load_object('my_controller.rb')
+  controller = Controller.load_context('my_controller.rb')
   # => #<Controller: ...>
   controller.test1
   # => "This is the first test"
   controller.test2('one two three')
   # => "Hello one two three"
-
 
 == INSTALL:
 
