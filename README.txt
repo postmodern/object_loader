@@ -5,7 +5,7 @@
 
 == DESCRIPTION:
 
-Load objects from Ruby files without having to use YAML or define
+Load Objects from Ruby files without having to use YAML or define
 classes named like the file.
 
 == EXAMPLES:
