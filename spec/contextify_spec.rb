@@ -1,12 +1,11 @@
 require 'contextify'
 
 require 'spec_helper'
+require 'helpers/book_context'
+require 'helpers/book_review_context'
 
 describe Contextify do
   before(:all) do
-    require 'helpers/book_context'
-    require 'helpers/book_review_context'
-
     @contexts_dir = File.expand_path(File.join(File.dirname(__FILE__),'helpers','contexts'))
     @snow_crash_path = File.join(@contexts_dir,'snow_crash.rb')
     @neuromancer_path = File.join(@contexts_dir,'neuromancer_review.rb')
@@ -65,7 +64,7 @@ describe Contextify do
     end
 
     it "should have instance methods" do
-      @book.methods.include?('rating').should == true
+      @book.respond_to?(:rating).should == true
       @book.rating.should == 10
     end
   end
