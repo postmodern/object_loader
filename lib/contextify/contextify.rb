@@ -1,7 +1,7 @@
 require 'contextify/exceptions/unknown_context'
 require 'contextify/exceptions/context_not_found'
-require 'contextify/pending_context'
 require 'contextify/extensions/meta'
+require 'contextify/pending_context'
 
 module Contextify
   def self.included(base)
