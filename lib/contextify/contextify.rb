@@ -1,6 +1,5 @@
-require 'contextify/exceptions/unknown_context'
-require 'contextify/exceptions/context_not_found'
-require 'contextify/extensions/meta'
+require 'contextify/exceptions'
+require 'contextify/extensions'
 require 'contextify/pending_context'
 
 module Contextify

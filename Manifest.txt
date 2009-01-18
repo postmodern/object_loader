@@ -3,10 +3,12 @@ Manifest.txt
 README.txt
 Rakefile
 lib/contextify.rb
+lib/contextify/exceptions.rb
 lib/contextify/exceptions/context_not_found.rb
 lib/contextify/exceptions/unknown_context.rb
-lib/contextify/extensions/meta/object.rb
+lib/contextify/extensions.rb
 lib/contextify/extensions/meta.rb
+lib/contextify/extensions/meta/object.rb
 lib/contextify/pending_context.rb
 lib/contextify/contextify.rb
 lib/contextify/version.rb
