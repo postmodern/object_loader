@@ -12,6 +12,10 @@ module Contextify
 
         meta_def(:context_name) { name }
 
+        meta_def(:load_context_block) do |path|
+          Contextify.load_block(name,path)
+        end
+
         meta_def(:load_context) do |path,*args|
           Contextify.load_context(self.context_name,path,*args)
         end
