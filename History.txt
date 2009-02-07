@@ -1,3 +1,7 @@
+=== 0.1.2 / 2009-02-06
+
+* Added self.load_context_block to Contextify.
+
 === 0.1.1 / 2009-01-17
 
 * Include missing files in Manifest.
