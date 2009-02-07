@@ -1,6 +1,7 @@
 === 0.1.2 / 2009-02-06
 
 * Added self.load_context_block to Contextify.
+* Added specs for Contextify.load_block and self.load_context_block.
 
 === 0.1.1 / 2009-01-17
 
