@@ -31,6 +31,12 @@ describe Contextify do
     }.should raise_error(Contextify::ContextNotFound)
   end
 
+  it "should load a block by context-name from a file" do
+    @block = Contextify.load_block(:book, @snow_crash_path)
+
+    @block.should_not be_nil
+  end
+
   it "should load contexts by context-name from a file" do
     @book = Contextify.load_context(:book, @snow_crash_path)
     @book.should_not be_nil
@@ -45,6 +51,12 @@ describe Contextify do
     @review = Contextify.load_context(:book_review, @neuromancer_path)
     @review.should_not be_nil
     @review.class.should == BookReview
+  end
+
+  it "should provide class-level methods for loading a context block" do
+    @block = Book.load_context_block(@snow_crash_path)
+
+    @block.should_not be_nil
   end
 
   it "should provide class-level methods for loading a context" do
