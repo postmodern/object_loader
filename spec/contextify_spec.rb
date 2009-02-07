@@ -32,37 +32,37 @@ describe Contextify do
   end
 
   it "should load a block by context-name from a file" do
-    @block = Contextify.load_block(:book, @snow_crash_path)
+    block = Contextify.load_block(:book, @snow_crash_path)
 
-    @block.should_not be_nil
+    block.should_not be_nil
   end
 
   it "should load contexts by context-name from a file" do
-    @book = Contextify.load_context(:book, @snow_crash_path)
-    @book.should_not be_nil
-    @book.class.should == Book
+    book = Contextify.load_context(:book, @snow_crash_path)
+    book.should_not be_nil
+    book.class.should == Book
   end
 
   it "should load a specific context from a file with multiple contexts" do
-    @book = Contextify.load_context(:book, @neuromancer_path)
-    @book.should_not be_nil
-    @book.class.should == Book
+    book = Contextify.load_context(:book, @neuromancer_path)
+    book.should_not be_nil
+    book.class.should == Book
 
-    @review = Contextify.load_context(:book_review, @neuromancer_path)
-    @review.should_not be_nil
-    @review.class.should == BookReview
+    review = Contextify.load_context(:book_review, @neuromancer_path)
+    review.should_not be_nil
+    review.class.should == BookReview
   end
 
   it "should provide class-level methods for loading a context block" do
-    @block = Book.load_context_block(@snow_crash_path)
+    block = Book.load_context_block(@snow_crash_path)
 
-    @block.should_not be_nil
+    block.should_not be_nil
   end
 
   it "should provide class-level methods for loading a context" do
-    @book = Book.load_context(@snow_crash_path)
-    @book.should_not be_nil
-    @book.class.should == Book
+    book = Book.load_context(@snow_crash_path)
+    book.should_not be_nil
+    book.class.should == Book
   end
 
   describe "loaded contexts" do
