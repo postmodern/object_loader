@@ -2,6 +2,7 @@
 
 * http://contextify.rubyforge.org/
 * http://github.com/postmodern/contextify/
+* Postmodern (postmodern.mod3 at gmail.com)
 
 == DESCRIPTION:
 
