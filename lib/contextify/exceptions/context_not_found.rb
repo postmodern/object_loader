@@ -1,4 +1,4 @@
 module Contextify
-  class ContextNotFound < RuntimeError
+  class ContextNotFound < StandardError
   end
 end

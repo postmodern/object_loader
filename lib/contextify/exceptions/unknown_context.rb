@@ -1,4 +1,4 @@
 module Contextify
-  class UnknownContext < RuntimeError
+  class UnknownContext < StandardError
   end
 end
