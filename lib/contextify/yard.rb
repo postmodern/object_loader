@@ -1,1 +1,1 @@
-require 'parameters/yard/handlers'
+require 'contextify/yard/handlers'

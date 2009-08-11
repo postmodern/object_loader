@@ -1,1 +1,1 @@
-require 'parameters/yard/handlers/ruby'
+require 'contextify/yard/handlers/ruby'
