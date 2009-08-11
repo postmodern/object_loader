@@ -8,7 +8,8 @@ module YARD
         handles :contextify, method_call(:contextify)
 
         def process
-          nobj = 'Kernel'
+          nobj = ModuleObject.new(:root, 'Kernel')
+
           mscope = scope
           name = if statement.type == :contextify
                    statement.jump(:ident, :op, :kw, :const).source
