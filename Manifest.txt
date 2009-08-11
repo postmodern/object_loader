@@ -12,6 +12,10 @@ lib/contextify/extensions/meta/object.rb
 lib/contextify/pending_context.rb
 lib/contextify/contextify.rb
 lib/contextify/version.rb
+lib/contextify/yard.rb
+lib/contextify/yard/handlers.rb
+lib/contextify/yard/handlers/ruby.rb
+lib/contextify/yard/handlers/ruby/contextify_handler.rb
 spec/contextify_spec.rb
 spec/spec_helper.rb
 tasks/spec.rb
