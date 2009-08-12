@@ -5,7 +5,7 @@ module YARD
     module Ruby
       class ContextifyHandler < Base
 
-        handles :contextify, method_call(:contextify)
+        handles method_call(:contextify)
 
         def process
           nobj = ModuleObject.new(:root, 'Kernel')
