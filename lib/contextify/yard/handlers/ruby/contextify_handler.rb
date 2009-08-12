@@ -9,21 +9,15 @@ module YARD
 
         def process
           nobj = ModuleObject.new(:root, 'Kernel')
+          obj = statement.parameters(false).first
 
           mscope = scope
-          name = if statement.type == :contextify
-                   statement.jump(:ident, :op, :kw, :const).source
-                 elsif statement.call?
-                   obj = statement.parameters(false).first
-
-                   case obj.type
-                   when :symbol_literal
-                     obj.jump(:ident, :op, :kw, :const).source
-                   when :string_literal
-                     obj.jump(:string_content).source
-                   end
-                 end
-
+          name = case obj.type
+          when :symbol_literal
+            obj.jump(:ident, :op, :kw, :const).source
+          when :string_literal
+            obj.jump(:string_content).source
+          end
 
           register MethodObject.new(nobj, name, mscope) do |o|
             o.visibility = :public
