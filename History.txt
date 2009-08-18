@@ -1,3 +1,11 @@
+=== 0.1.3 / 2009-08-18
+
+* Require Hoe >= 2.0.0.
+* Require YARD >= 0.2.3.5.
+* Use 'hoe/signing' for signed RubyGems.
+* Moved to YARD based documentation.
+* Added YARD handlers for documenting contextify method calls.
+
 === 0.1.2 / 2009-02-06
 
 * Added self.load_context_block to Contextify.
