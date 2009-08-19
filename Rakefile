@@ -5,7 +5,6 @@ require 'hoe'
 require 'hoe/signing'
 require './tasks/spec.rb'
 require './tasks/yard.rb'
-require './lib/contextify/version.rb'
 
 Hoe.spec('contextify') do
   self.rubyforge_name = 'contextify'
