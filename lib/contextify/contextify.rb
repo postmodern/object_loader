@@ -37,44 +37,46 @@ module Contextify
     end
 
     #
-    # Returns a Hash of all defined contexts.
+    # @return [Hash] All defined contexts.
     #
     def Contextify.contexts
       @@contextify_contexts ||= {}
     end
 
     #
-    # Returns +true+ if there is a context defined with the specified
-    # _name_, returns +false+ otherwise.
+    # @return [true, false] Specifies whether there is a context defined
+    #                       with the specified _name_.
     #
     def Contextify.is_context?(name)
       Contextify.contexts.has_key?(name.to_s)
     end
 
     #
-    # Returns the Array of contexts which are waiting to be loaded.
+    # @return [Array<PendingContext>] Contexts which are waiting to be
+    #                                  loaded.
     #
     def Contextify.waiting
       @@contextify_waiting_contexts ||= []
     end
 
     #
-    # Returns the pending context being loaded.
+    # @return [PendingContext] The pending context being loaded.
     #
     def Contextify.pending
       Contextify.waiting.first
     end
 
     #
-    # Returns +true+ if there is a pending context present, returns
-    # +false+ otherwise.
+    # @return [true, false] Specifies whether there is a pending context
+    #                       present.
     #
     def Contextify.is_pending?
       !(Contextify.waiting.empty?)
     end
 
     #
-    # Returns the first pending context with the specified _path_.
+    # @return [PendingContext] The first pending context with the specified
+    #                          _path_.
     #
     def Contextify.loading(path)
       Contextify.waiting.each do |pending|
@@ -87,16 +89,18 @@ module Contextify
     end
 
     #
-    # Returns +true+ if the pending context with the specified _path_
-    # is present, returns +false+ otherwise.
+    # @return [true, false] Specifies wheter a pending context was loaded
+    #                       from the specified _path_.
     #
     def Contextify.is_loading?(path)
       !(Contextify.loading(path).nil?)
     end
 
     #
-    # Loads all context blocks from the specified _path_, returning a
-    # PendingContext object containing the context blocks.
+    # Loads all context blocks from the specified _path_.
+    #
+    # @param [String] path The path to load all context blocks from.
+    # @return [PendingContext]
     #
     def Contextify.load_blocks(path,&block)
       path = File.expand_path(path)
@@ -122,11 +126,21 @@ module Contextify
 
     #
     # Loads the context block of the specified _name_ from the specified
-    # _path_, returning the context block. If a _block_ is given it will
-    # be passed the loaded context block.
+    # _path_.
     #
-    #   Contextify.load_block(:exploit,'/path/to/my_exploit.rb') # => Proc
+    # @param [Symbol, String] name The name of the context to load the
+    #                              block for.
+    # @param [String] path The path to load the context block from.
+    # @yield [block] The block which will receive the context block.
+    # @yieldparam [Proc] block The context block loaded from the
+    #                          specified _path_.
+    # @return [Proc] The block for the context with the specified _name_.
     #
+    # @example
+    #   Contextify.load_block(:exploit,'/path/to/my_exploit.rb')
+    #   # => Proc
+    #
+    # @example
     #   Contextify.load_block(:shellcode,'/path/to/my_shellcode.rb')
     #     do |block|
     #     ...
@@ -140,20 +154,27 @@ module Contextify
     end
 
     #
-    # Loads the context of the specified _name_ and from the specified
-    # _path_ with the given _args_. If no contexts were defined with the
-    # specified _name_, an UnknownContext exception will be raised.
+    # Loads the context object of the specified _name_ and from the
+    # specified _path_ with the given _arguments_.
     #
-    #   Contextify.load_context(:note,'/path/to/my_notes.rb') # => Note
+    # @param [Symbol, String] name The name of the context to load.
+    # @param [String] path The path to load the context object from.
+    # @return [Object] the loaded context object.
+    # @raise [UnknownContext] No context was defined with the matching
+    #                         _name_.
     #
-    def Contextify.load_context(name,path,*args)
+    # @example
+    #   Contextify.load_context(:note,'/path/to/my_notes.rb')
+    #   # => Note
+    #
+    def Contextify.load_context(name,path,*arguments)
       name = name.to_s
 
       unless Contextify.is_context?(name)
         raise(UnknownContext,"unknown context #{name.dump}",caller)
       end
 
-      new_context = Contextify.contexts[name].new(*args)
+      new_context = Contextify.contexts[name].new(*arguments)
 
       Contextify.load_block(name,path) do |context_block|
         new_context.instance_eval(&context_block) if context_block
@@ -163,10 +184,12 @@ module Contextify
     end
 
     #
-    # Loads all contexts from the specified _path_ returning an +Array+
-    # of loaded contexts. If a _block_ is given, it will be passed
-    # each loaded context.
+    # Loads all context objects from the specified _path_.
     #
+    # @param [String] path The path to load all context objects from.
+    # @return [Array] The array of loaded context objects.
+    #
+    # @example
     #   Contextify.load_contexts('/path/to/misc_contexts.rb') # => [...]
     #
     def Contextify.load_contexts(path,&block)
