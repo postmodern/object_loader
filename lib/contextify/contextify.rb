@@ -45,14 +45,18 @@ module Contextify
     end
 
     #
+    # Determines whether a context with a specific name has been defined.
+    #
     # @return [Boolean]
     #   Specifies whether there is a context defined with the specified
-    #   _name_.
+    #   name.
     #
     def Contextify.is_context?(name)
       Contextify.contexts.has_key?(name.to_s)
     end
 
+    #
+    # The contexts waiting to be fully loaded.
     #
     # @return [Array<PendingContext>]
     #   Contexts which are waiting to be loaded.
@@ -62,6 +66,8 @@ module Contextify
     end
 
     #
+    # The first context waiting to be fully loaded.
+    #
     # @return [PendingContext]
     #   The pending context being loaded.
     #
@@ -69,6 +75,8 @@ module Contextify
       Contextify.waiting.first
     end
 
+    #
+    # Determines whether there are pending contexts.
     #
     # @return [Boolean]
     #   Specifies whether there is a pending context present.
@@ -78,8 +86,10 @@ module Contextify
     end
 
     #
+    # Finds the first pending context being loaded from a specific path.
+    #
     # @return [PendingContext]
-    #   The first pending context with the specified _path_.
+    #   The first pending context with the specified path.
     #
     def Contextify.loading(path)
       Contextify.waiting.each do |pending|
@@ -92,21 +102,24 @@ module Contextify
     end
 
     #
+    # Determines whether contexts are being loaded from a specific path.
+    #
     # @return [Boolean]
-    #   Specifies wheter a pending context was loaded from the specified
-    #   _path_.
+    #   Specifies whether pending contexts are being loaded from the
+    #   specified path.
     #
     def Contextify.is_loading?(path)
       !(Contextify.loading(path).nil?)
     end
 
     #
-    # Loads all context blocks from the specified _path_.
+    # Loads all context blocks from a specific path.
     #
     # @param [String] path
     #   The path to load all context blocks from.
     #
     # @return [PendingContext]
+    #   The pending context which contains the blocks.
     #
     def Contextify.load_blocks(path,&block)
       path = File.expand_path(path)
@@ -131,8 +144,8 @@ module Contextify
     end
 
     #
-    # Loads the context block of the specified _name_ from the specified
-    # _path_.
+    # Loads the context block for the context with the specific name
+    # from a specific path.
     #
     # @param [Symbol, String] name
     #   The name of the context to load the block for.
@@ -156,7 +169,7 @@ module Contextify
     # @example
     #   Contextify.load_block(:shellcode,'/path/to/my_shellcode.rb')
     #     do |block|
-    #     ...
+    #     # ...
     #   end
     #
     def Contextify.load_block(name,path,&block)
@@ -167,8 +180,8 @@ module Contextify
     end
 
     #
-    # Loads the context object of the specified _name_ and from the
-    # specified _path_ with the given _arguments_.
+    # Loads the context object of a specific name and from the specific
+    # path.
     #
     # @param [Symbol, String] name
     #   The name of the context to load.
@@ -180,7 +193,7 @@ module Contextify
     #   The loaded context object.
     #
     # @raise [UnknownContext]
-    #   No context was defined with the matching _name_.
+    #   No context was defined with the specific name.
     #
     # @example
     #   Contextify.load_context(:note,'/path/to/my_notes.rb')
@@ -203,7 +216,7 @@ module Contextify
     end
 
     #
-    # Loads all context objects from the specified _path_.
+    # Loads all context objects from a specific path.
     #
     # @param [String] path
     #   The path to load all context objects from.
@@ -212,7 +225,8 @@ module Contextify
     #   The array of loaded context objects.
     #
     # @example
-    #   Contextify.load_contexts('/path/to/misc_contexts.rb') # => [...]
+    #   Contextify.load_contexts('/path/to/misc_contexts.rb')
+    #   # => [...]
     #
     def Contextify.load_contexts(path,&block)
       new_objs = []

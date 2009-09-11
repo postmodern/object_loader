@@ -8,7 +8,7 @@ module Contextify
     attr_accessor :blocks
 
     #
-    # Creates a new PendingContext object with the specified _path_.
+    # Creates a new PendingContext object.
     #
     # @param [String] path
     #   The path the pending context was loaded from.
