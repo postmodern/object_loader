@@ -45,7 +45,7 @@ module Contextify
     end
 
     #
-    # @return [true, false]
+    # @return [Boolean]
     #   Specifies whether there is a context defined with the specified
     #   _name_.
     #
@@ -70,7 +70,7 @@ module Contextify
     end
 
     #
-    # @return [true, false]
+    # @return [Boolean]
     #   Specifies whether there is a pending context present.
     #
     def Contextify.is_pending?
@@ -92,7 +92,7 @@ module Contextify
     end
 
     #
-    # @return [true, false]
+    # @return [Boolean]
     #   Specifies wheter a pending context was loaded from the specified
     #   _path_.
     #
