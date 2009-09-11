@@ -167,8 +167,7 @@ module Contextify
     #   # => Proc
     #
     # @example
-    #   Contextify.load_block(:shellcode,'/path/to/my_shellcode.rb')
-    #     do |block|
+    #   Contextify.load_block(:shellcode,'/path/to/execve.rb') do |block|
     #     # ...
     #   end
     #
