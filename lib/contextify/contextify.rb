@@ -22,10 +22,17 @@ module Contextify
           Contextify.load_block(name,path)
         end
 
-        meta_def(:load_context) do |path|
-          Contextify.load_contexts(path).find do |obj|
-            obj.kind_of?(self)
+        meta_def(:load_context) do |path,*args|
+          pending = Contextify.load_blocks(path)
+          obj = nil
+
+          context, block = pending.blocks.find do |name,block|
+            Contextify.contexts[name].ancestors.include?(self)
           end
+
+          obj = Contextify.contexts[name].new(*args)
+          obj.instance_eval(&block)
+          obj
         end
 
         # define the top-level context wrappers
