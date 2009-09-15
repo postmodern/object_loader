@@ -65,6 +65,10 @@ describe Contextify do
     book.class.should == Book
   end
 
+  it "should return nil when loading contexts incompatible with the class" do
+    BookReview.load_context(@snow_crash_path).should be_nil
+  end
+
   describe "loaded contexts" do
     before(:all) do
       @book = Book.load_context(@snow_crash_path)
