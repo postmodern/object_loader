@@ -24,7 +24,6 @@ module Contextify
 
         meta_def(:load_context) do |path,*args|
           pending = Contextify.load_blocks(path)
-          obj = nil
 
           context, block = pending.blocks.find do |name,block|
             Contextify.contexts[name].ancestors.include?(self)
