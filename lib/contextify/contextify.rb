@@ -30,9 +30,11 @@ module Contextify
             Contextify.contexts[name].ancestors.include?(self)
           end
 
-          obj = Contextify.contexts[name].new(*args)
-          obj.instance_eval(&block)
-          obj
+          if (context && block)
+            obj = Contextify.contexts[name].new(*args)
+            obj.instance_eval(&block)
+            obj
+          end
         end
 
         # define the top-level context wrappers
