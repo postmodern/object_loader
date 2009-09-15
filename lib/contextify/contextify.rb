@@ -16,8 +16,10 @@ module Contextify
           Contextify.load_block(name,path)
         end
 
-        meta_def(:load_context) do |path,*args|
-          Contextify.load_context(self.context_name,path,*args)
+        meta_def(:load_context) do |path|
+          Contextify.load_contexts(path).find do |obj|
+            obj.kind_of?(self)
+          end
         end
 
         # define the top-level context wrappers
