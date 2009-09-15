@@ -5,6 +5,12 @@ require 'contextify/pending_context'
 module Contextify
   def self.included(base)
     base.module_eval do
+      #
+      # Contextifies the class.
+      #
+      # @param [Symbol, String] name
+      #   The context name to assign to the class.
+      #
       def self.contextify(name)
         name = name.to_s
 
