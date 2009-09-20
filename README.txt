@@ -35,6 +35,7 @@ classes named like the file.
 
   end
 
+  # load a Controller object from a file.
   controller = Controller.load_context('my_controller.rb')
   # => #<Controller: ...>
   controller.test1
