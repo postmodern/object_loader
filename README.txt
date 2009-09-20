@@ -1,4 +1,4 @@
-= contextify
+= Contextify
 
 * http://contextify.rubyforge.org/
 * http://github.com/postmodern/contextify/
