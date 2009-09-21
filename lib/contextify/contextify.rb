@@ -53,8 +53,10 @@ module Contextify
     end
 
     #
-    # @return [Hash]
-    #   All defined contexts.
+    # All contextified classes.
+    #
+    # @return [Hash{Symbol => Class}]
+    #   All defined contexts and their classes.
     #
     def Contextify.contexts
       @@contextify_contexts ||= {}
@@ -62,6 +64,9 @@ module Contextify
 
     #
     # Determines whether a context with a specific name has been defined.
+    #
+    # @param [Symbol, String] name
+    #   The name of the context to search for.
     #
     # @return [Boolean]
     #   Specifies whether there is a context defined with the specified
@@ -104,6 +109,9 @@ module Contextify
     #
     # Finds the first pending context being loaded from a specific path.
     #
+    # @param [String] path
+    #   The path which is being loaded.
+    #
     # @return [PendingContext]
     #   The first pending context with the specified path.
     #
@@ -119,6 +127,9 @@ module Contextify
 
     #
     # Determines whether contexts are being loaded from a specific path.
+    #
+    # @param [String] path
+    #   The path to check if contexts are being loaded from.
     #
     # @return [Boolean]
     #   Specifies whether pending contexts are being loaded from the
