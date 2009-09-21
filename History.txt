@@ -1,7 +1,8 @@
-=== 0.1.3 / 2009-09-13
+=== 0.1.3 / 2009-09-21
 
-* Require Hoe >= 2.0.0.
+* Require Hoe >= 2.3.3.
 * Require YARD >= 0.2.3.5.
+* Require RSpec >= 1.2.8.
 * Use 'hoe/signing' for signed RubyGems.
 * Moved to YARD based documentation.
 * Added YARD handlers for documenting contextify method calls.
