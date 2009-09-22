@@ -18,7 +18,7 @@ classes named like the file.
     
     contextify :controller
     
-    ...
+    # ...
     
   end
 
@@ -38,6 +38,7 @@ classes named like the file.
   # load a Controller object from a file.
   controller = Controller.load_context('my_controller.rb')
   # => #<Controller: ...>
+
   controller.test1
   # => "This is the first test"
   controller.test2('one two three')
