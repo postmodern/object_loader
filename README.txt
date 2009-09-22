@@ -43,6 +43,10 @@ classes named like the file.
   controller.test2('one two three')
   # => "Hello one two three"
 
+== REQUIREMENTS:
+
+* {YARD}[http://yard.soen.ca/] >= 0.2.3.5
+
 == INSTALL:
 
   $ sudo gem install contextify
