@@ -28,7 +28,7 @@ module Contextify
     #   A pending context block.
     #
     def each_block(&block)
-      @blocks.each(&block)
+      @blocks.each_value(&block)
     end
 
   end
