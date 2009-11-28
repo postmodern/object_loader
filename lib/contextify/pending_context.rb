@@ -62,7 +62,7 @@ module Contextify
     #   A pending context block.
     #
     def each(&block)
-      @block.each(&block)
+      @blocks.each(&block)
     end
 
   end
