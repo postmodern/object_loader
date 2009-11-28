@@ -25,7 +25,7 @@ module Contextify
         meta_def(:load_context) do |path,*args|
           pending = Contextify.load_blocks(path)
 
-          context, block = pending.blocks.find do |name,block|
+          context, block = pending.find do |name,block|
             Contextify.contexts[name].ancestors.include?(self)
           end
 
@@ -259,7 +259,7 @@ module Contextify
     new_objs = []
 
     Contextify.load_blocks(path) do |pending|
-      pending.each_block do |name,context_block|
+      pending.each do |name,context_block|
         if Contextify.is_context?(name)
           new_obj = Contextify.contexts[name].new
           new_obj.instance_eval(&context_block)
