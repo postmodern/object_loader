@@ -10,6 +10,7 @@ lib/contextify/extensions.rb
 lib/contextify/extensions/meta.rb
 lib/contextify/extensions/meta/object.rb
 lib/contextify/pending_context.rb
+lib/contextify/class_methods.rb
 lib/contextify/contextify.rb
 lib/contextify/version.rb
 lib/contextify/yard.rb
