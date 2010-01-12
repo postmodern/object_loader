@@ -21,4 +21,3 @@ lib/contextify/yard/handlers/ruby/legacy.rb
 lib/contextify/yard/handlers/ruby/legacy/contextify_handler.rb
 spec/contextify_spec.rb
 spec/spec_helper.rb
-tasks/spec.rb
