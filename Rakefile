@@ -12,7 +12,7 @@ Hoe.spec('contextify') do
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
 
-  self.yard_opts += ['--protected']
+  self.yard_options += ['--protected']
   self.remote_yard_dir = ''
 
   self.extra_dev_deps += [
