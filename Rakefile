@@ -7,7 +7,6 @@ require 'hoe/signing'
 Hoe.plugin :yard
 
 Hoe.spec('contextify') do
-  self.rubyforge_name = 'contextify'
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
