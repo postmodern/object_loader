@@ -1,5 +1,7 @@
 === 0.1.4 / 2009-01-30
 
+* Require RSpec >= 1.3.0.
+* Require YARD >= 0.5.3.
 * Added {Contextify::ClassMethods}.
 * Added {Contextify::PendingContext#each_class}.
 * Added {Contextify::PendingContext#each}.
