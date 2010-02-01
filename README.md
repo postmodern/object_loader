@@ -1,54 +1,54 @@
-= Contextify
+# Contextify
 
 * http://contextify.rubyforge.org/
 * http://github.com/postmodern/contextify/
 * Postmodern (postmodern.mod3 at gmail.com)
 
-== DESCRIPTION:
+## DESCRIPTION:
 
 Load Objects from Ruby files without having to use YAML or define
 classes named like the file.
 
-== EXAMPLES:
+## EXAMPLES:
 
-  # file: controller.rb
-  class Controller
+    # file: controller.rb
+    class Controller
   
-    include Contextify
+      include Contextify
     
-    contextify :controller
+      contextify :controller
     
-    # ...
+      # ...
     
-  end
-
-  # file: my_controller.rb
-  controller do
-  
-    def test1
-      'This is the first test'
-    end
-  
-    def test2(mesg)
-      "Hello #{mesg}"
     end
 
-  end
+    # file: my_controller.rb
+    controller do
+  
+      def test1
+        'This is the first test'
+      end
+  
+      def test2(mesg)
+        "Hello #{mesg}"
+      end
 
-  # load a Controller object from a file.
-  controller = Controller.load_context('my_controller.rb')
-  # => #<Controller: ...>
+    end
 
-  controller.test1
-  # => "This is the first test"
-  controller.test2('one two three')
-  # => "Hello one two three"
+    # load a Controller object from a file.
+    controller = Controller.load_context('my_controller.rb')
+    # => #<Controller: ...>
 
-== INSTALL:
+    controller.test1
+    # => "This is the first test"
+    controller.test2('one two three')
+    # => "Hello one two three"
 
-  $ sudo gem install contextify
+## INSTALL:
 
-== LICENSE:
+    $ sudo gem install contextify
+
+## LICENSE:
 
 The MIT License
 
