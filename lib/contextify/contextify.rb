@@ -115,7 +115,13 @@ module Contextify
       # push on the new pending context
       Contextify.waiting.unshift(PendingContext.new(path))
 
-      load(path)
+      begin
+        load(path)
+      rescue SyntaxError, LoadError => e
+        # if any error is encountered, pop off the context
+        Contextify.waiting.shift
+        raise(e)
+      end
     end
 
     # pop off and return the pending context

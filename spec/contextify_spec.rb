@@ -37,6 +37,22 @@ describe Contextify do
     pending_context.blocks.should have_key('book')
   end
 
+  it "should recover from SyntaxError exceptions" do
+    lambda {
+      Contextify.load_blocks(context_path(:syntax_error))
+    }.should raise_error(SyntaxError)
+
+    Contextify.waiting.should be_empty
+  end
+
+  it "should recover from LoadError exceptions" do
+    lambda {
+      Contextify.load_blocks(context_path(:load_error))
+    }.should raise_error(LoadError)
+
+    Contextify.waiting.should be_empty
+  end
+
   it "should load a block by context-name from a file" do
     block = Contextify.load_block(:book, @snow_crash_path)
 
