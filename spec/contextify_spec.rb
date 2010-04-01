@@ -9,6 +9,9 @@ describe Contextify do
   before(:all) do
     @snow_crash_path = context_path(:snow_crash)
     @neuromancer_path = context_path(:neuromancer_review)
+
+    @syntax_error_path = context_path(:syntax_error)
+    @load_error_path = context_path(:load_error)
   end
 
   it "should contain defined contexts" do
@@ -39,18 +42,18 @@ describe Contextify do
 
   it "should recover from SyntaxError exceptions" do
     lambda {
-      Contextify.load_blocks(context_path(:syntax_error))
+      Contextify.load_blocks(@syntax_error_path)
     }.should raise_error(SyntaxError)
 
-    Contextify.waiting.should be_empty
+    Contextify.loading(@syntax_error_path).should be_nil
   end
 
   it "should recover from LoadError exceptions" do
     lambda {
-      Contextify.load_blocks(context_path(:load_error))
+      Contextify.load_blocks(@load_error_path)
     }.should raise_error(LoadError)
 
-    Contextify.waiting.should be_empty
+    Contextify.loading(@load_error_path).should be_nil
   end
 
   it "should load a block by context-name from a file" do
