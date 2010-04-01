@@ -1,14 +1,14 @@
 require 'contextify'
 
 require 'spec_helper'
-require 'helpers/book_context'
-require 'helpers/book_review_context'
+require 'helpers/contexts'
 
 describe Contextify do
+  include Helpers::Contexts
+
   before(:all) do
-    @contexts_dir = File.expand_path(File.join(File.dirname(__FILE__),'helpers','contexts'))
-    @snow_crash_path = File.join(@contexts_dir,'snow_crash.rb')
-    @neuromancer_path = File.join(@contexts_dir,'neuromancer_review.rb')
+    @snow_crash_path = context_path(:snow_crash)
+    @neuromancer_path = context_path(:neuromancer_review)
   end
 
   it "should contain defined contexts" do
