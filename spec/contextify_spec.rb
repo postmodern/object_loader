@@ -19,16 +19,22 @@ describe Contextify do
     Book.context_name.should == 'book'
   end
 
-  it "should raise an UnknownContext exception when loading unknwon-contexts" do
+  it "should raise UnknownContext when loading unknwon-contexts" do
     lambda {
       Contextify.load_context(:nothing, 'some_path.rb')
     }.should raise_error(Contextify::UnknownContext)
   end
 
-  it "should raise a ContextNotFound exception when loading from non-existant files" do
+  it "should raise ContextNotFound when loading from non-existant files" do
     lambda {
       Contextify.load_context(:book, 'not_here.rb')
     }.should raise_error(Contextify::ContextNotFound)
+  end
+
+  it "should load arbitrary blocks from a file" do
+    pending_context = Contextify.load_blocks(@snow_crash_path)
+
+    pending_context.blocks.should have_key('book')
   end
 
   it "should load a block by context-name from a file" do
