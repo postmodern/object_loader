@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-03-31}
+  s.date = %q{2010-04-02}
   s.description = %q{Contextify can load Ruby Objects containing methods and procs from Ruby files without having to use YAML or define classes named like the file.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
@@ -49,6 +49,7 @@ Gem::Specification.new do |s|
     "spec/helpers/contexts.rb",
     "spec/helpers/contexts/load_error.rb",
     "spec/helpers/contexts/neuromancer_review.rb",
+    "spec/helpers/contexts/no_method_error.rb",
     "spec/helpers/contexts/snow_crash.rb",
     "spec/helpers/contexts/syntax_error.rb",
     "spec/spec_helper.rb"
@@ -65,6 +66,7 @@ Gem::Specification.new do |s|
     "spec/helpers/book_review_context.rb",
     "spec/helpers/contexts/neuromancer_review.rb",
     "spec/helpers/contexts/snow_crash.rb",
+    "spec/helpers/contexts/no_method_error.rb",
     "spec/helpers/contexts/syntax_error.rb",
     "spec/helpers/contexts/load_error.rb",
     "spec/helpers/contexts.rb",
