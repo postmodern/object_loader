@@ -117,7 +117,7 @@ module Contextify
 
       begin
         load(path)
-      rescue SyntaxError, LoadError => e
+      rescue SyntaxError, LoadError, NoMethodError => e
         # if any error is encountered, pop off the context
         Contextify.waiting.shift
         raise(e)

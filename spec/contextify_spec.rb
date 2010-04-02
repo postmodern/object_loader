@@ -12,6 +12,7 @@ describe Contextify do
 
     @syntax_error_path = context_path(:syntax_error)
     @load_error_path = context_path(:load_error)
+    @no_method_error_path = context_path(:no_method_error)
   end
 
   it "should contain defined contexts" do
@@ -54,6 +55,14 @@ describe Contextify do
     }.should raise_error(LoadError)
 
     Contextify.loading(@load_error_path).should be_nil
+  end
+
+  it "should recover from NoMethodError exceptions" do
+    lambda {
+      Contextify.load_blocks(@no_method_error_path)
+    }.should raise_error(NoMethodError)
+
+    Contextify.loading(@no_method_error_path).should be_nil
   end
 
   it "should load a block by context-name from a file" do
