@@ -56,6 +56,7 @@ Gem::Specification.new do |s|
   ]
   s.has_rdoc = %q{yard}
   s.homepage = %q{http://github.com/postmodern/contextify}
+  s.licenses = ["MIT"]
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
