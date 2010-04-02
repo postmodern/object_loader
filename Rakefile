@@ -7,6 +7,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = 'contextify'
     gem.version = Contextify::VERSION
+    gem.license = 'MIT'
     gem.summary = %Q{Loads Ruby Objects containing methods and procs from Ruby files.}
     gem.description = %Q{Contextify can load Ruby Objects containing methods and procs from Ruby files without having to use YAML or define classes named like the file.}
     gem.email = 'postmodern.mod3@gmail.com'
