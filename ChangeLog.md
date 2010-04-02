@@ -1,3 +1,9 @@
+### 0.1.5 / 2009-02-02
+
+* Prevent exceptions from jamming the {Contextify.waiting} queue when
+  loading context files with {Contextify.load_blocks}.
+* Added specs for loading and recovering from erroneous context files.
+
 ### 0.1.4 / 2009-01-30
 
 * Require RSpec >= 1.3.0.
