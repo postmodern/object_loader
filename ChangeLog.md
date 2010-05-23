@@ -1,3 +1,8 @@
+### 0.1.6 / 2010-05-23
+
+* Moved the Contextify YARD handlers into the
+  [yard-contextify](http://github.com/postmodern/yard-contextify) library.
+
 ### 0.1.5 / 2009-02-02
 
 * Prevent exceptions from jamming the {Contextify.waiting} queue when
