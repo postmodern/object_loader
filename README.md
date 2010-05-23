@@ -1,7 +1,7 @@
 # Contextify
 
-* http://contextify.rubyforge.org/
-* http://github.com/postmodern/contextify/
+* [github.com/postmodern/contextify](http://github.com/postmodern/contextify)
+* [github.com/postmodern/contextify/issues](http://github.com/postmodern/contextify/issues)
 * Postmodern (postmodern.mod3 at gmail.com)
 
 ## Description
