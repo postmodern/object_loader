@@ -1,4 +1,5 @@
 require 'contextify/extensions'
+require 'contextify/contextified_class_methods'
 
 module Contextify
   module ClassMethods
@@ -11,27 +12,10 @@ module Contextify
     def contextify(name)
       name = name.to_s
 
+      @context_name = name
+      extend ContextifiedClassMethods
+
       Contextify.contexts[name] = self
-
-      meta_def(:context_name) { name }
-
-      meta_def(:load_context_block) do |path|
-        Contextify.load_block(self.context_name,path)
-      end
-
-      meta_def(:load_context) do |path,*args|
-        pending = Contextify.load_blocks(path)
-
-        pending_name, pending_block = pending.find do |name,block|
-          Contextify.contexts[name].ancestors.include?(self)
-        end
-
-        if (pending_name && pending_block)
-          obj = Contextify.contexts[pending_name].new(*args)
-          obj.instance_eval(&pending_block)
-          obj
-        end
-      end
 
       # define the top-level context wrappers
       Kernel.module_eval %{
