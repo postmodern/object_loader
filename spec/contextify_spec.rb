@@ -8,6 +8,7 @@ describe Contextify do
 
   before(:all) do
     @snow_crash_path = context_path(:snow_crash)
+    @discrete_structures_path = context_path(:discrete_structures)
     @neuromancer_path = context_path(:neuromancer_review)
 
     @syntax_error_path = context_path(:syntax_error)
@@ -17,10 +18,12 @@ describe Contextify do
 
   it "should contain defined contexts" do
     Contextify.is_context?('book').should == true
+    Contextify.is_context?('text_book').should == true
   end
 
   it "should create a class-level context name" do
     Book.context_name.should == 'book'
+    TextBook.context_name.should == 'text_book'
   end
 
   it "should raise UnknownContext when loading unknwon-contexts" do
@@ -97,6 +100,12 @@ describe Contextify do
     book = Book.load_context(@snow_crash_path)
     book.should_not be_nil
     book.class.should == Book
+  end
+
+  it "should load contexts which inherit from the contextified class" do
+    book = Book.load_context(@discrete_structures_path)
+    book.should_not be_nil
+    book.class.should == TextBook
   end
 
   it "should return nil when loading contexts incompatible with the class" do
