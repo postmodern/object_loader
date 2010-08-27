@@ -9,64 +9,67 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-05-23}
+  s.date = %q{2010-08-27}
   s.description = %q{Contextify can load Ruby Objects containing methods and procs from Ruby files without having to use YAML or define classes named like the file.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
     "ChangeLog.md",
-     "LICENSE.txt",
-     "README.md"
+    "LICENSE.txt",
+    "README.md"
   ]
   s.files = [
     ".gitignore",
-     ".specopts",
-     ".yardopts",
-     "ChangeLog.md",
-     "LICENSE.txt",
-     "README.md",
-     "Rakefile",
-     "contextify.gemspec",
-     "lib/contextify.rb",
-     "lib/contextify/class_methods.rb",
-     "lib/contextify/contextify.rb",
-     "lib/contextify/exceptions.rb",
-     "lib/contextify/exceptions/context_not_found.rb",
-     "lib/contextify/exceptions/unknown_context.rb",
-     "lib/contextify/extensions.rb",
-     "lib/contextify/extensions/meta.rb",
-     "lib/contextify/extensions/meta/object.rb",
-     "lib/contextify/pending_context.rb",
-     "lib/contextify/version.rb",
-     "lib/contextify/yard.rb",
-     "spec/contextify_spec.rb",
-     "spec/helpers/book_context.rb",
-     "spec/helpers/book_review_context.rb",
-     "spec/helpers/contexts.rb",
-     "spec/helpers/contexts/load_error.rb",
-     "spec/helpers/contexts/neuromancer_review.rb",
-     "spec/helpers/contexts/no_method_error.rb",
-     "spec/helpers/contexts/snow_crash.rb",
-     "spec/helpers/contexts/syntax_error.rb",
-     "spec/spec_helper.rb"
+    ".specopts",
+    ".yardopts",
+    "ChangeLog.md",
+    "Gemfile",
+    "Gemfile.lock",
+    "LICENSE.txt",
+    "README.md",
+    "Rakefile",
+    "contextify.gemspec",
+    "lib/contextify.rb",
+    "lib/contextify/class_methods.rb",
+    "lib/contextify/contextified_class_methods.rb",
+    "lib/contextify/contextify.rb",
+    "lib/contextify/exceptions.rb",
+    "lib/contextify/exceptions/context_not_found.rb",
+    "lib/contextify/exceptions/unknown_context.rb",
+    "lib/contextify/pending_context.rb",
+    "lib/contextify/version.rb",
+    "lib/contextify/yard.rb",
+    "spec/contextify_spec.rb",
+    "spec/helpers/book_context.rb",
+    "spec/helpers/book_review_context.rb",
+    "spec/helpers/contexts.rb",
+    "spec/helpers/contexts/discrete_structures.rb",
+    "spec/helpers/contexts/load_error.rb",
+    "spec/helpers/contexts/neuromancer_review.rb",
+    "spec/helpers/contexts/no_method_error.rb",
+    "spec/helpers/contexts/snow_crash.rb",
+    "spec/helpers/contexts/syntax_error.rb",
+    "spec/helpers/text_book_context.rb",
+    "spec/spec_helper.rb"
   ]
   s.has_rdoc = %q{yard}
   s.homepage = %q{http://github.com/postmodern/contextify}
   s.licenses = ["MIT"]
-  s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Loads Ruby Objects containing methods and procs from Ruby files.}
   s.test_files = [
-    "spec/spec_helper.rb",
-     "spec/helpers/book_review_context.rb",
-     "spec/helpers/contexts/no_method_error.rb",
-     "spec/helpers/contexts/snow_crash.rb",
-     "spec/helpers/contexts/load_error.rb",
-     "spec/helpers/contexts/syntax_error.rb",
-     "spec/helpers/contexts/neuromancer_review.rb",
-     "spec/helpers/book_context.rb",
-     "spec/helpers/contexts.rb",
-     "spec/contextify_spec.rb"
+    "spec/contextify_spec.rb",
+    "spec/helpers/book_context.rb",
+    "spec/helpers/book_review_context.rb",
+    "spec/helpers/contexts.rb",
+    "spec/helpers/contexts/discrete_structures.rb",
+    "spec/helpers/contexts/load_error.rb",
+    "spec/helpers/contexts/neuromancer_review.rb",
+    "spec/helpers/contexts/no_method_error.rb",
+    "spec/helpers/contexts/snow_crash.rb",
+    "spec/helpers/contexts/syntax_error.rb",
+    "spec/helpers/text_book_context.rb",
+    "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -74,12 +77,18 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, [">= 1.3.0"])
+      s.add_development_dependency(%q<rake>, ["~> 0.8.7"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.5.0"])
+      s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
     else
-      s.add_dependency(%q<rspec>, [">= 1.3.0"])
+      s.add_dependency(%q<rake>, ["~> 0.8.7"])
+      s.add_dependency(%q<jeweler>, ["~> 1.5.0"])
+      s.add_dependency(%q<rspec>, ["~> 1.3.0"])
     end
   else
-    s.add_dependency(%q<rspec>, [">= 1.3.0"])
+    s.add_dependency(%q<rake>, ["~> 0.8.7"])
+    s.add_dependency(%q<jeweler>, ["~> 1.5.0"])
+    s.add_dependency(%q<rspec>, ["~> 1.3.0"])
   end
 end
 

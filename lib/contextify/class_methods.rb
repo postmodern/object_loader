@@ -1,4 +1,3 @@
-require 'contextify/extensions'
 require 'contextify/contextified_class_methods'
 
 module Contextify
