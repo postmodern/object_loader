@@ -48,7 +48,9 @@ Ruby files without having to use YAML or define classes named like the file.
 
     $ sudo gem install contextify
 
-## License
+## Copyright
+
+Copyright (c) 2010 Hal Brodigan
 
 See {file:LICENSE.txt} for license information.
 
