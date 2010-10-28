@@ -1,3 +1,10 @@
+### 0.2.0 / 2010-10-27
+
+* Added {Contextify::ContextifiedClassMethods}.
+* Fixed a block-variable shadowing bug in
+  {Contextify::ClassMethods#contextify}.
+* Removed the `metaid.rb` extension.
+
 ### 0.1.6 / 2010-05-23
 
 * Moved the Contextify YARD handlers into the
