@@ -1,2 +1,0 @@
-bok do
-end

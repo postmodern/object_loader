@@ -1,10 +1,8 @@
-require 'contextify'
+require 'objectify'
 
 class Book
 
-  include Contextify
-
-  contextify :book
+  include Objectify
 
   # Title of the book
   attr_accessor :title

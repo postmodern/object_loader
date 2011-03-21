@@ -1,0 +1,115 @@
+require 'spec_helper'
+require 'helpers/objects'
+
+require 'objectify'
+
+describe Objectify do
+  include Helpers::Objects
+
+  before(:all) do
+    @snow_crash_path = object_path(:snow_crash)
+    @discrete_structures_path = object_path(:discrete_structures)
+    @neuromancer_path = object_path(:neuromancer_review)
+
+    @syntax_error_path = object_path(:syntax_error)
+    @load_error_path = object_path(:load_error)
+    @no_method_error_path = object_path(:no_method_error)
+  end
+
+  it "should raise ObjectNotFound when loading from non-existant files" do
+    lambda {
+      Book.load_object('not_here.rb')
+    }.should raise_error(Objectify::ObjectNotFound)
+  end
+
+  it "should load arbitrary blocks from a file" do
+    blocks = Objectify.load_blocks(@snow_crash_path)
+
+    blocks.should_not be_empty
+  end
+
+  it "should recover from SyntaxError exceptions" do
+    lambda {
+      Objectify.load_blocks(@syntax_error_path)
+    }.should raise_error(SyntaxError)
+
+    Objectify.loading(@syntax_error_path).should be_nil
+  end
+
+  it "should recover from LoadError exceptions" do
+    lambda {
+      Objectify.load_blocks(@load_error_path)
+    }.should raise_error(LoadError)
+
+    Objectify.loading(@load_error_path).should be_nil
+  end
+
+  it "should recover from NoMethodError exceptions" do
+    lambda {
+      Objectify.load_blocks(@no_method_error_path)
+    }.should raise_error(NoMethodError)
+
+    Objectify.loading(@no_method_error_path).should be_nil
+  end
+
+  it "should load a block for a specific Class from a file" do
+    block = Book.load_object_block(@snow_crash_path)
+
+    block.should_not be_nil
+  end
+
+  it "should provide class-level methods for loading an object" do
+    book = Book.load_object(@snow_crash_path)
+
+    book.should_not be_nil
+    book.class.should == Book
+  end
+
+  it "should load objects for a specific Class from a file" do
+    book = Book.load_object(@snow_crash_path)
+
+    book.should_not be_nil
+    book.class.should == Book
+  end
+
+  it "should load the object of a specific Class from a file with multiple contexts" do
+    review = BookReview.load_object(@neuromancer_path)
+
+    review.should_not be_nil
+    review.class.should == BookReview
+  end
+
+  it "should not load objects if none are of a specific Class" do
+    book = Book.load_object(@neuromancer_path)
+
+    book.should_not be_nil
+    book.class.should == Book
+  end
+
+  it "should load the object which inherit from a specific Class" do
+    book = Book.load_object(@discrete_structures_path)
+
+    book.should_not be_nil
+    book.class.should == TextBook
+  end
+
+  it "should return nil when loading objects incompatible with the Class" do
+    BookReview.load_object(@snow_crash_path).should be_nil
+  end
+
+  describe "loaded objects" do
+    before(:all) do
+      @book = Book.load_object(@snow_crash_path)
+    end
+
+    it "should have attributes" do
+      @book.title.should == 'Snow Crash'
+      @book.author.should == 'Neal Stephenson'
+    end
+
+    it "should have instance methods" do
+      @book.respond_to?(:rating).should == true
+      @book.rating.should == 10
+    end
+  end
+end

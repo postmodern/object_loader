@@ -1,5 +1,0 @@
-book do
-
-  def
-
-end
