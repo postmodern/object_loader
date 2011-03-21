@@ -1,8 +1,9 @@
 # Contextify
 
-* [github.com/postmodern/contextify](http://github.com/postmodern/contextify)
-* [github.com/postmodern/contextify/issues](http://github.com/postmodern/contextify/issues)
-* Postmodern (postmodern.mod3 at gmail.com)
+* [Source](http://github.com/postmodern/contextify)
+* [Issues](http://github.com/postmodern/contextify/issues)
+* [Documentation](http://rubydoc.info/gems/contextify)
+* [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
 
@@ -53,4 +54,3 @@ Ruby files without having to use YAML or define classes named like the file.
 Copyright (c) 2010 Hal Brodigan
 
 See {file:LICENSE.txt} for license information.
-
