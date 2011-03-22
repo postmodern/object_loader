@@ -12,6 +12,7 @@ describe Objectify do
 
   let(:syntax_error_path) { object_path(:syntax_error) }
   let(:load_error_path) { object_path(:load_error) }
+  let(:name_error_path) { object_path(:name_error) }
   let(:no_method_error_path) { object_path(:no_method_error) }
 
   it "should raise ObjectNotFound when loading from non-existant files" do
@@ -40,6 +41,14 @@ describe Objectify do
     }.should raise_error(LoadError)
 
     Objectify.loading(load_error_path).should be_nil
+  end
+
+  it "should recover from NameError exceptions" do
+    lambda {
+      Objectify.load_blocks(name_error_path)
+    }.should raise_error(NameError)
+
+    Objectify.loading(name_error_path).should be_nil
   end
 
   it "should recover from NoMethodError exceptions" do

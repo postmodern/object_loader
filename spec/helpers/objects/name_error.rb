@@ -1,0 +1,2 @@
+Foo.objectify do
+end
