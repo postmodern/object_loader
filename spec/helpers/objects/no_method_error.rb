@@ -1,5 +1,2 @@
-Book.objectify do
-  
-  foo
-
+Book.objectifyyyyyyyyyyyy do
 end
