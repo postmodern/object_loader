@@ -1,4 +1,4 @@
-module Contextify
-  # contextify version
-  VERSION = '0.2.0'
+module Objectify
+  # objectify version
+  VERSION = '1.0.0'
 end
