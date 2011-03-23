@@ -14,7 +14,7 @@ module Objectify
   end
 
   #
-  # The contexts waiting to be fully loaded.
+  # The pending objects waiting to be fully loaded.
   #
   # @return [Array<PendingObject>]
   #   Contexts which are waiting to be loaded.
@@ -26,10 +26,10 @@ module Objectify
   end
 
   #
-  # The first context waiting to be fully loaded.
+  # The first pending object waiting to be fully loaded.
   #
   # @return [PendingObject]
-  #   The pending context being loaded.
+  #   The pending object being loaded.
   #
   # @since 1.0.0
   #
@@ -65,10 +65,10 @@ module Objectify
   end
 
   #
-  # Determines whether contexts are being loaded from a specific path.
+  # Determines whether objects are being loaded from a specific path.
   #
   # @param [String] path
-  #   The path to check if contexts are being loaded from.
+  #   The path to check if objects are being loaded from.
   #
   # @return [Boolean]
   #   Specifies whether pending objects are being loaded from the
@@ -81,10 +81,10 @@ module Objectify
   end
 
   #
-  # Loads all context blocks from a specific path.
+  # Loads all object blocks from a specific path.
   #
   # @param [String] path
-  #   The path to load all context blocks from.
+  #   The path to load all object blocks from.
   #
   # @return [PendingObject]
   #   The pending object which contains the blocks.
@@ -95,10 +95,10 @@ module Objectify
     path = File.expand_path(path)
 
     unless File.file?(path)
-      raise(ObjectNotFound,"context #{path.dump} doest not exist",caller)
+      raise(ObjectNotFound,"#{path.dump} doest not exist",caller)
     end
 
-    # prevent circular loading of contexts
+    # prevent circular loading of objects
     unless is_pending?
       # push on the new pending object
       queue.unshift(PendingObject.new(path))
@@ -106,13 +106,13 @@ module Objectify
       begin
         load(path)
       rescue Exception => e
-        # if any error is encountered, pop off the context
+        # if any error is encountered, pop off the object
         queue.shift
         raise(e)
       end
     end
 
-    # pop off and return the pending context
+    # pop off and return the pending object
     pending_object = queue.shift
 
     yield pending_object if block_given?
@@ -120,16 +120,16 @@ module Objectify
   end
 
   #
-  # Loads all context objects from a specific path.
+  # Loads all objects from a specific path.
   #
   # @param [String] path
-  #   The path to load all context objects from.
+  #   The path to load all objects from.
   #
   # @return [Array]
-  #   The array of loaded context objects.
+  #   The array of loaded objects.
   #
   # @example
-  #   Contextify.load_contexts('/path/to/misc_contexts.rb')
+  #   Objectify.load_objects('/path/to/misc_object.rb')
   #   # => [...]
   #
   # @since 1.0.0

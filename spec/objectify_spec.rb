@@ -79,7 +79,7 @@ describe Objectify do
     book.class.should == Book
   end
 
-  it "should load the object of a specific Class from a file with multiple contexts" do
+  it "should load the object of a specific Class from a file with multiple objects" do
     review = BookReview.load_object(neuromancer_path)
 
     review.should_not be_nil
