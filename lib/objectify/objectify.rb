@@ -3,6 +3,12 @@ require 'objectify/class_methods'
 require 'objectify/pending_object'
 
 module Objectify
+  #
+  # Includes {ClassMethods} into the class.
+  #
+  # @param [Class] base
+  #   The class that {Objectify} is being included into.
+  #
   def self.included(base)
     base.extend ClassMethods
   end
@@ -12,6 +18,8 @@ module Objectify
   #
   # @return [Array<PendingObject>]
   #   Contexts which are waiting to be loaded.
+  #
+  # @since 1.0.0
   #
   def Objectify.queue
     @@queue ||= []
@@ -23,6 +31,8 @@ module Objectify
   # @return [PendingObject]
   #   The pending context being loaded.
   #
+  # @since 1.0.0
+  #
   def Objectify.pending
     queue.first
   end
@@ -32,6 +42,8 @@ module Objectify
   #
   # @return [Boolean]
   #   Specifies whether there is a pending object present.
+  #
+  # @since 1.0.0
   #
   def Objectify.is_pending?
     !(queue.empty?)
@@ -45,6 +57,8 @@ module Objectify
   #
   # @return [PendingObject]
   #   The first pending object with the specified path.
+  #
+  # @since 1.0.0
   #
   def Objectify.loading(path)
     queue.find { |pending| pending.path == path }
@@ -60,6 +74,8 @@ module Objectify
   #   Specifies whether pending objects are being loaded from the
   #   specified path.
   #
+  # @since 1.0.0
+  #
   def Objectify.is_loading?(path)
     !(loading(path).nil?)
   end
@@ -72,6 +88,8 @@ module Objectify
   #
   # @return [PendingObject]
   #   The pending object which contains the blocks.
+  #
+  # @since 1.0.0
   #
   def Objectify.load_blocks(path)
     path = File.expand_path(path)
@@ -113,6 +131,8 @@ module Objectify
   # @example
   #   Contextify.load_contexts('/path/to/misc_contexts.rb')
   #   # => [...]
+  #
+  # @since 1.0.0
   #
   def Objectify.load_objects(path)
     new_objects = []

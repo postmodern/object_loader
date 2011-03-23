@@ -9,6 +9,8 @@ module Objectify
     # @return [Proc]
     #   The block defined for the context.
     #
+    # @since 1.0.0
+    #
     def load_object_block(path)
       Objectify.load_blocks(path)[self]
     end
@@ -25,6 +27,8 @@ module Objectify
     # @return [Object]
     #   The loaded context.
     #
+    # @since 1.0.0
+    #
     def load_object(path,*arguments)
       pending = Objectify.load_blocks(path)
 
@@ -39,6 +43,18 @@ module Objectify
       end
     end
 
+    #
+    # Creates a loadable object using the arguments and block.
+    #
+    # @param [Array] args
+    #   Additional arguments to pass to the Classes `new` method.
+    #
+    # @yield []
+    #   The given block will be instance evaled into the newly created object
+    #   when the object is loaded.
+    #
+    # @since 1.0.0
+    #
     def objectify(*args,&block)
       if (args.empty? && Objectify.is_pending?)
         Objectify.pending[self] = block
