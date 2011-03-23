@@ -115,7 +115,7 @@ module Objectify
   #   # => [...]
   #
   def Objectify.load_objects(path)
-    new_objs = []
+    new_objects = []
 
     load_blocks(path) do |pending|
       pending.each do |klass,block|
