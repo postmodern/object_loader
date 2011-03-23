@@ -1,13 +1,13 @@
 ### 1.0.0 / 2011-03-22
 
-* Renamed Contextify to Objectify.
+* Renamed Contextify to {Objectify}.
 * Refactored the API.
 
 ### 0.2.0 / 2010-10-27
 
-* Added {Contextify::ContextifiedClassMethods}.
+* Added `Contextify::ContextifiedClassMethods`.
 * Fixed a block-variable shadowing bug in
-  {Contextify::ClassMethods#contextify}.
+  `Contextify::ClassMethods#contextify`.
 * Removed the `metaid.rb` extension.
 
 ### 0.1.6 / 2010-05-23
@@ -17,20 +17,20 @@
 
 ### 0.1.5 / 2009-02-02
 
-* Prevent exceptions from jamming the {Contextify.waiting} queue when
-  loading context files with {Contextify.load_blocks}.
+* Prevent exceptions from jamming the `Contextify.waiting` queue when
+  loading context files with `Contextify.load_blocks`.
 * Added specs for loading and recovering from erroneous context files.
 
 ### 0.1.4 / 2009-01-30
 
 * Require RSpec >= 1.3.0.
 * Require YARD >= 0.5.3.
-* Added {Contextify::ClassMethods}.
-* Added {Contextify::PendingContext#each_class}.
-* Added {Contextify::PendingContext#each}.
-* Fixed a bug in {Contextify::PendingContext#each_block}.
-* Fixed a typo where {Contextify} methods where being defined within
-  the {Contextify.included} method.
+* Added `Contextify::ClassMethods`.
+* Added `Contextify::PendingContext#each_class`.
+* Added `Contextify::PendingContext#each`.
+* Fixed a bug in `Contextify::PendingContext#each_block`.
+* Fixed a typo where `Contextify` methods where being defined within
+  the `Contextify.included` method.
 
 ### 0.1.3 / 2009-09-21
 
