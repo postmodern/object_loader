@@ -1,4 +1,4 @@
-require 'load/errors/should/not/stop/objectify'
+require 'load/errors/should/not/stop/object_loader'
 
-Book.objectify do
+Book.object do
 end

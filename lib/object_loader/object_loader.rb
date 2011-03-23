@@ -1,13 +1,13 @@
-require 'objectify/exceptions/object_not_found'
-require 'objectify/class_methods'
-require 'objectify/pending_object'
+require 'object_loader/exceptions/object_not_found'
+require 'object_loader/class_methods'
+require 'object_loader/pending_object'
 
-module Objectify
+module ObjectLoader
   #
   # Includes {ClassMethods} into the class.
   #
   # @param [Class] base
-  #   The class that {Objectify} is being included into.
+  #   The class that {ObjectLoader} is being included into.
   #
   def self.included(base)
     base.extend ClassMethods
@@ -21,7 +21,7 @@ module Objectify
   #
   # @since 1.0.0
   #
-  def Objectify.queue
+  def ObjectLoader.queue
     @@queue ||= []
   end
 
@@ -33,7 +33,7 @@ module Objectify
   #
   # @since 1.0.0
   #
-  def Objectify.pending
+  def ObjectLoader.pending
     queue.first
   end
 
@@ -45,7 +45,7 @@ module Objectify
   #
   # @since 1.0.0
   #
-  def Objectify.is_pending?
+  def ObjectLoader.is_pending?
     !(queue.empty?)
   end
 
@@ -60,7 +60,7 @@ module Objectify
   #
   # @since 1.0.0
   #
-  def Objectify.loading(path)
+  def ObjectLoader.loading(path)
     queue.find { |pending| pending.path == path }
   end
 
@@ -76,7 +76,7 @@ module Objectify
   #
   # @since 1.0.0
   #
-  def Objectify.is_loading?(path)
+  def ObjectLoader.is_loading?(path)
     !(loading(path).nil?)
   end
 
@@ -91,7 +91,7 @@ module Objectify
   #
   # @since 1.0.0
   #
-  def Objectify.load_blocks(path)
+  def ObjectLoader.load_blocks(path)
     path = File.expand_path(path)
 
     unless File.file?(path)
@@ -129,12 +129,12 @@ module Objectify
   #   The array of loaded objects.
   #
   # @example
-  #   Objectify.load_objects('/path/to/misc_object.rb')
+  #   ObjectLoader.load_objects('/path/to/misc_object.rb')
   #   # => [...]
   #
   # @since 1.0.0
   #
-  def Objectify.load_objects(path)
+  def ObjectLoader.load_objects(path)
     new_objects = []
 
     load_blocks(path) do |pending|

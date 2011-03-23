@@ -1,6 +1,6 @@
 ### 1.0.0 / 2011-03-22
 
-* Renamed Contextify to {Objectify}.
+* Renamed Contextify to {ObjectLoader}.
 * Refactored the API.
 
 ### 0.2.0 / 2010-10-27

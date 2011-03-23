@@ -1,4 +1,4 @@
-Book.objectify do
+Book.object do
 
   @title = 'Snow Crash'
   @author = 'Neal Stephenson'

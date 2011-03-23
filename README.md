@@ -1,13 +1,13 @@
-# Objectify
+# ObjectLoader
 
-* [Source](http://github.com/postmodern/objectify)
-* [Issues](http://github.com/postmodern/objectify/issues)
-* [Documentation](http://rubydoc.info/gems/objectify)
+* [Source](http://github.com/postmodern/object_loader)
+* [Issues](http://github.com/postmodern/object_loader/issues)
+* [Documentation](http://rubydoc.info/gems/object_loader)
 * [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
 
-Objectify can load Ruby Objects containing methods and procs from
+ObjectLoader can load Ruby Objects containing methods and procs from
 Ruby files without having to use YAML or define classes named like the file.
 
 ## Examples
@@ -15,14 +15,14 @@ Ruby files without having to use YAML or define classes named like the file.
     # file: controller.rb
     class Controller
   
-      include Objectify
+      include ObjectLoader
     
       # ...
     
     end
 
     # file: my_controller.rb
-    Controller.objectify do
+    Controller.object do
   
       def test1
         'This is the first test'
@@ -45,7 +45,7 @@ Ruby files without having to use YAML or define classes named like the file.
 
 ## Install
 
-    $ sudo gem install objectify
+    $ sudo gem install object_loader
 
 ## Copyright
 

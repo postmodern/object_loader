@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'helpers/objects'
 
-require 'objectify'
+require 'object_loader'
 
-describe Objectify do
+describe ObjectLoader do
   include Helpers::Objects
 
   let(:snow_crash_path) { object_path(:snow_crash) }
@@ -18,45 +18,45 @@ describe Objectify do
   it "should raise ObjectNotFound when loading from non-existant files" do
     lambda {
       Book.load_object('not_here.rb')
-    }.should raise_error(Objectify::ObjectNotFound)
+    }.should raise_error(ObjectLoader::ObjectNotFound)
   end
 
   it "should load arbitrary blocks from a file" do
-    blocks = Objectify.load_blocks(snow_crash_path)
+    blocks = ObjectLoader.load_blocks(snow_crash_path)
 
     blocks.should_not be_empty
   end
 
   it "should recover from SyntaxError exceptions" do
     lambda {
-      Objectify.load_blocks(syntax_error_path)
+      ObjectLoader.load_blocks(syntax_error_path)
     }.should raise_error(SyntaxError)
 
-    Objectify.loading(syntax_error_path).should be_nil
+    ObjectLoader.loading(syntax_error_path).should be_nil
   end
 
   it "should recover from LoadError exceptions" do
     lambda {
-      Objectify.load_blocks(load_error_path)
+      ObjectLoader.load_blocks(load_error_path)
     }.should raise_error(LoadError)
 
-    Objectify.loading(load_error_path).should be_nil
+    ObjectLoader.loading(load_error_path).should be_nil
   end
 
   it "should recover from NameError exceptions" do
     lambda {
-      Objectify.load_blocks(name_error_path)
+      ObjectLoader.load_blocks(name_error_path)
     }.should raise_error(NameError)
 
-    Objectify.loading(name_error_path).should be_nil
+    ObjectLoader.loading(name_error_path).should be_nil
   end
 
   it "should recover from NoMethodError exceptions" do
     lambda {
-      Objectify.load_blocks(no_method_error_path)
+      ObjectLoader.load_blocks(no_method_error_path)
     }.should raise_error(NoMethodError)
 
-    Objectify.loading(no_method_error_path).should be_nil
+    ObjectLoader.loading(no_method_error_path).should be_nil
   end
 
   it "should load a block for a specific Class from a file" do

@@ -1,8 +1,8 @@
-require 'objectify'
+require 'object_loader'
 
 class BookReview
 
-  include Objectify
+  include ObjectLoader
 
   # Title of the book
   attr_accessor :book_title

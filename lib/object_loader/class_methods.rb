@@ -1,4 +1,4 @@
-module Objectify
+module ObjectLoader
   module ClassMethods
     #
     # Loads a block for the Class.
@@ -12,7 +12,7 @@ module Objectify
     # @since 1.0.0
     #
     def load_object_block(path)
-      Objectify.load_blocks(path)[self]
+      ObjectLoader.load_blocks(path)[self]
     end
 
     #
@@ -30,7 +30,7 @@ module Objectify
     # @since 1.0.0
     #
     def load_object(path,*arguments)
-      pending = Objectify.load_blocks(path)
+      pending = ObjectLoader.load_blocks(path)
 
       pending_class, pending_block = pending.find do |klass,block|
         klass.ancestors.include?(self)
@@ -55,9 +55,9 @@ module Objectify
     #
     # @since 1.0.0
     #
-    def objectify(*args,&block)
-      if (args.empty? && Objectify.is_pending?)
-        Objectify.pending[self] = block
+    def object(*args,&block)
+      if (args.empty? && ObjectLoader.is_pending?)
+        ObjectLoader.pending[self] = block
         return nil
       else
         new_object = self.new(*args)

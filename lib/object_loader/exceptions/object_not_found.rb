@@ -1,4 +1,4 @@
-module Objectify
+module ObjectLoader
   class ObjectNotFound < StandardError
   end
 end

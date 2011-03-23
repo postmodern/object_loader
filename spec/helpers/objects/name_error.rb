@@ -1,2 +1,2 @@
-Foo.objectify do
+Foo.object do
 end

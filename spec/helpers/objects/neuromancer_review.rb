@@ -1,11 +1,11 @@
-Book.objectify do
+Book.object do
 
   @title = 'Neuromancer'
   @author = 'William Gibson'
 
 end
 
-BookReview.objectify do
+BookReview.object do
 
   @book_title = 'Neuromancer'
   @book_author = 'William Gibson'

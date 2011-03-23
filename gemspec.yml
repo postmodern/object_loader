@@ -1,12 +1,12 @@
-name: objectify
+name: object_loader
 summary: Loads Ruby Objects containing methods and procs from Ruby files.
 description:
-  Objectify can load Ruby Objects containing methods and procs from Ruby
+  ObjectLoader can load Ruby Objects containing methods and procs from Ruby
   files without having to use YAML or define classes named like the file.
 license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
-homepage: http://github.com/postmodern/objectify
+homepage: http://github.com/postmodern/object_loader
 has_yard: true
 
 development_dependencies:

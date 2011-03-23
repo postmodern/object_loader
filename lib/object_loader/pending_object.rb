@@ -1,4 +1,4 @@
-module Objectify
+module ObjectLoader
   class PendingObject < Hash
 
     # The path being loaded
