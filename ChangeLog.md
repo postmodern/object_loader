@@ -1,3 +1,8 @@
+### 1.0.0 / 2011-03-22
+
+* Renamed Contextify to Objectify.
+* Refactored the API.
+
 ### 0.2.0 / 2010-10-27
 
 * Added {Contextify::ContextifiedClassMethods}.
