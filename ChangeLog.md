@@ -1,3 +1,8 @@
+### 1.0.1 / 2012-05-27
+
+* Replaced ore-tasks with
+  [rubygems-tasks](https://github.com/postmodern/rubygems-tasks#readme).
+
 ### 1.0.0 / 2011-03-22
 
 * Renamed Contextify to {ObjectLoader}.
