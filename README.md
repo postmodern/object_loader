@@ -49,6 +49,6 @@ Ruby files without having to use YAML or define classes named like the file.
 
 ## Copyright
 
-Copyright (c) 2011 Hal Brodigan
+Copyright (c) 2008-2012 Hal Brodigan
 
 See {file:LICENSE.txt} for license information.
