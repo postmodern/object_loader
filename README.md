@@ -1,7 +1,7 @@
 # ObjectLoader
 
-* [Source](http://github.com/postmodern/object_loader)
-* [Issues](http://github.com/postmodern/object_loader/issues)
+* [Source](https://github.com/postmodern/object_loader)
+* [Issues](https://github.com/postmodern/object_loader/issues)
 * [Documentation](http://rubydoc.info/gems/object_loader)
 * [Email](mailto:postmodern.mod3 at gmail.com)
 
