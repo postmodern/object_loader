@@ -45,7 +45,7 @@ Ruby files without having to use YAML or define classes named like the file.
 
 ## Install
 
-    $ sudo gem install object_loader
+    $ gem install object_loader
 
 ## Copyright
 
